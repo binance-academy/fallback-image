@@ -30,7 +30,7 @@ const ImageWithFallBack = ({ src, alt, invertedRatio = 56.25, ...otherProps }) =
 ImageWithFallBack.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
-  invertedRatio: PropTypes.string,
+  invertedRatio: PropTypes.string.isRequired,
 };
 
 export default ImageWithFallBack;
