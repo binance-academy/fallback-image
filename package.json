@@ -4,8 +4,8 @@
   "description": "Display an elegant fallback while an image is loading",
   "main": "build/index.js",
   "scripts": {
-    "build": "webpack",
-    "start": "webpack --watch",
+    "build": "rm -rf ./build && webpack",
+    "dev": "webpack --watch",
     "prepublishOnly": "npm run build",
     "lint": "eslint src/** *.js",
     "format": "prettier --write src/** *.js",

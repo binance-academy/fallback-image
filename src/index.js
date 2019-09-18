@@ -9,7 +9,7 @@ const imgStyle = {
   transition: "opacity 1s linear",
 };
 
-const ImageWithFallBack = ({ src, alt, invertedRatio = 56.25, ...otherProps }) => {
+const Image = ({ src, alt, invertedRatio = 56.25, ...otherProps }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -29,15 +29,15 @@ const ImageWithFallBack = ({ src, alt, invertedRatio = 56.25, ...otherProps }) =
   );
 };
 
-ImageWithFallBack.propTypes = {
+Image.propTypes = {
   /* Url of the image */
   src: PropTypes.string.isRequired,
 
   /* Alternative text to displayed if the image connot be loaded */
   alt: PropTypes.string.isRequired,
 
-  /* Iverted ratio as a % (for a 16/9 ratio it's 9/16*100=56.25 for example) */
+  /* Inverted ratio as a % (for a 16/9 ratio it's 9/16*100=56.25 for example) */
   invertedRatio: PropTypes.string.isRequired,
 };
 
-export default ImageWithFallBack;
+export default Image;
