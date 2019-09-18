@@ -3,6 +3,7 @@
 
 # production
 /build
+/storybook-static
 
 # logs
 yarn-debug.log*

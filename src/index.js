@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 const imgStyle = {
   position: "absolute",
+  width: "100%",
   top: 0,
   left: 0,
   transition: "opacity 1s linear",
@@ -27,9 +28,15 @@ const ImageWithFallBack = ({ src, alt, invertedRatio = 56.25, ...otherProps }) =
     </div>
   );
 };
+
 ImageWithFallBack.propTypes = {
+  /* Url of the image */
   src: PropTypes.string.isRequired,
+
+  /* Alternative text to displayed if the image connot be loaded */
   alt: PropTypes.string.isRequired,
+
+  /* Iverted ratio as a % (for a 16/9 ratio it's 9/16*100=56.25 for example) */
   invertedRatio: PropTypes.string.isRequired,
 };
 
