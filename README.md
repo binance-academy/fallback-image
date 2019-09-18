@@ -5,8 +5,8 @@ Display a fallback while an image is loading, to avoid a jump effect when the im
 ## Install
 
 ```
-yarn add fallback-image
-npm install fallback-image
+yarn add @binance-academy/fallback-image
+npm install @binance-academy/fallback-image
 ```
 
 ## Usage
@@ -28,5 +28,9 @@ import Image from "fallback-image";
 
 <Image alt="Alt text" src="https://via.placeholder.com/800x450" />
 
-<Image alt="Alt text" src="https://via.placeholder.com/400x300" invertedRatio={(3 / 4) * 100} />
+<Image
+    alt="Alt text"
+    src="https://via.placeholder.com/400x300"
+    invertedRatio={(3 / 4) * 100}
+/>
 ```

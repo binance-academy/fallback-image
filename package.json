@@ -1,7 +1,7 @@
 {
-  "name": "fallback-image",
-  "version": "1.0.0",
-  "description": "Display an elegant fallback while an image is loading",
+  "name": "@binance-academy/fallback-image",
+  "version": "1.0.1",
+  "description": "Display a fallback while an image is loading",
   "main": "build/index.js",
   "scripts": {
     "build": "rm -rf ./build && webpack",
@@ -16,7 +16,10 @@
     "type": "git",
     "url": "git+ssh://git@github.com/Binance-Academy/fallback-image.git"
   },
-  "author": "Brice",
+  "author": "Binance Academy <academy@binance.com> (https://www.binance.vision/)",
+  "contributors": [
+    "Brykou"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Binance-Academy/fallback-image/issues"
