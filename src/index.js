@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 const imgStyle = {
@@ -9,25 +9,35 @@ const imgStyle = {
   transition: "opacity 1s linear",
 };
 
-const Image = ({ src, alt, invertedRatio = 56.25, ...otherProps }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    const image = new Image();
-    image.onload = () => {
-      setIsLoaded(true);
+class Image extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoaded: false,
     };
-    image.src = src;
-  }, [src]);
+  }
 
-  return (
-    <div style={{ position: "relative" }} {...otherProps}>
-      <div style={{ paddingBottom: `${invertedRatio}%`, backgroundColor: "transparent" }} />
-      <img src={isLoaded ? src : null} alt={alt} style={{ ...imgStyle, opacity: isLoaded ? 1 : 0 }} />
-      <noscript>{<img src={src} alt={alt} style={imgStyle} />}</noscript>
-    </div>
-  );
-};
+  render() {
+    const { src, alt, invertedRatio = 56.25, maxWidth, ...otherProps } = this.props;
+    const { isLoaded } = this.state;
+    return (
+      <div style={{ position: "relative", width: "100%", maxWidth: maxWidth || "auto" }} {...otherProps}>
+        <div style={{ paddingBottom: `${invertedRatio}%`, backgroundColor: "transparent" }} />
+        <img
+          src={src}
+          alt={alt}
+          style={{ ...imgStyle, opacity: isLoaded ? 1 : 0 }}
+          onLoad={() => {
+            this.setState({
+              isLoaded: true,
+            });
+          }}
+        />
+        <noscript>{<img src={src} alt={alt} style={imgStyle} />}</noscript>
+      </div>
+    );
+  }
+}
 
 Image.propTypes = {
   /* Url of the image */
@@ -38,6 +48,9 @@ Image.propTypes = {
 
   /* Inverted ratio as a % (for a 16/9 ratio it's 9/16*100=56.25 for example) */
   invertedRatio: PropTypes.string.isRequired,
+
+  /* Provide an optional max width for the image */
+  maxWidth: PropTypes.string,
 };
 
 export default Image;
