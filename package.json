@@ -1,6 +1,6 @@
 {
   "name": "@binance-academy/fallback-image",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Display a fallback while an image is loading",
   "main": "build/index.js",
   "scripts": {
