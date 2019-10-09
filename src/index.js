@@ -19,12 +19,23 @@ const imgStyle = {
   transition: "opacity 1s linear",
 };
 
-class Image extends React.Component {
+class ImageWithFallBack extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoaded: false,
     };
+  }
+
+  componentDidMount() {
+    const { src } = this.props;
+    const image = new Image();
+    image.onload = () => {
+      this.setState({
+        isLoaded: true,
+      });
+    };
+    image.src = src;
   }
 
   render() {
@@ -33,23 +44,14 @@ class Image extends React.Component {
     return (
       <div style={{ ...containterStyle, maxWidth: maxWidth || "auto" }} {...otherProps}>
         <div style={{ ...placeholderStyle, paddingBottom: `${invertedRatio}%` }} />
-        <img
-          src={src}
-          alt={alt}
-          style={{ ...imgStyle, opacity: isLoaded ? 1 : 0 }}
-          onLoad={() => {
-            this.setState({
-              isLoaded: true,
-            });
-          }}
-        />
+        <img src={isLoaded ? src : null} alt={alt} style={{ ...imgStyle, opacity: isLoaded ? 1 : 0 }} />
         <noscript>{<img src={src} alt={alt} style={imgStyle} />}</noscript>
       </div>
     );
   }
 }
 
-Image.propTypes = {
+ImageWithFallBack.propTypes = {
   /* Url of the image */
   src: PropTypes.string.isRequired,
 
@@ -57,10 +59,10 @@ Image.propTypes = {
   alt: PropTypes.string.isRequired,
 
   /* Inverted ratio as a % (for a 16/9 ratio it's 9/16*100=56.25 for example) */
-  invertedRatio: PropTypes.string.isRequired,
+  invertedRatio: PropTypes.number.isRequired,
 
   /* Provide an optional max width for the image */
   maxWidth: PropTypes.string,
 };
 
-export default Image;
+export default ImageWithFallBack;
