@@ -1,6 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+const containterStyle = {
+  position: "relative",
+  width: "100%",
+  overflow: "hidden",
+};
+
+const placeholderStyle = {
+  backgroundColor: "transparent",
+};
+
 const imgStyle = {
   position: "absolute",
   width: "100%",
@@ -21,8 +31,8 @@ class Image extends React.Component {
     const { src, alt, invertedRatio = 56.25, maxWidth, ...otherProps } = this.props;
     const { isLoaded } = this.state;
     return (
-      <div style={{ position: "relative", width: "100%", maxWidth: maxWidth || "auto" }} {...otherProps}>
-        <div style={{ paddingBottom: `${invertedRatio}%`, backgroundColor: "transparent" }} />
+      <div style={{ ...containterStyle, maxWidth: maxWidth || "auto" }} {...otherProps}>
+        <div style={{ ...placeholderStyle, paddingBottom: `${invertedRatio}%` }} />
         <img
           src={src}
           alt={alt}
