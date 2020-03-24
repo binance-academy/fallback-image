@@ -17,6 +17,8 @@ const imgStyle = {
   top: 0,
   left: 0,
   transition: "opacity 1s linear",
+  height: "100%",
+  objectFit: "cover",
 };
 
 class ImageWithFallBack extends React.Component {
