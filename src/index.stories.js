@@ -25,4 +25,9 @@ storiesOf("Image", module)
     <Container>
       <Image alt="Alt text" src="https://via.placeholder.com/400x300" invertedRatio={(3 / 4) * 100} />
     </Container>
+  ))
+  .add("with incorrect ratio", () => (
+    <Container>
+      <Image alt="Alt text" src="https://via.placeholder.com/400x300" invertedRatio={(9 / 16) * 100} />
+    </Container>
   ));
