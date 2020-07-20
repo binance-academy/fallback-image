@@ -16,7 +16,6 @@ module.exports = {
   root: true,
   rules: {
     "react/forbid-prop-types": [1, { forbid: ["any"] }],
-    "react/require-default-props": 0,
     "react/jsx-filename-extension": 0,
     "react/jsx-props-no-spreading": 0,
   },

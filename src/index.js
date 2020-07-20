@@ -41,13 +41,15 @@ class ImageWithFallBack extends React.Component {
   }
 
   render() {
-    const { src, alt, invertedRatio = 56.25, maxWidth, ...otherProps } = this.props;
+    const { src, alt, invertedRatio, maxWidth, ...otherProps } = this.props;
     const { isLoaded } = this.state;
     return (
-      <div style={{ ...containterStyle, maxWidth: maxWidth || "auto" }} {...otherProps}>
+      <div style={{ ...containterStyle, maxWidth }} {...otherProps}>
         <div style={{ ...placeholderStyle, paddingBottom: `${invertedRatio}%` }} />
         <img src={isLoaded ? src : null} alt={alt} style={{ ...imgStyle, opacity: isLoaded ? 1 : 0 }} />
-        <noscript>{<img src={src} alt={alt} style={imgStyle} />}</noscript>
+        <noscript>
+          <img src={src} alt={alt} style={imgStyle} />
+        </noscript>
       </div>
     );
   }
@@ -61,10 +63,15 @@ ImageWithFallBack.propTypes = {
   alt: PropTypes.string.isRequired,
 
   /* Inverted ratio as a % (for a 16/9 ratio it's 9/16*100=56.25 for example) */
-  invertedRatio: PropTypes.number.isRequired,
+  invertedRatio: PropTypes.number,
 
   /* Provide an optional max width for the image */
   maxWidth: PropTypes.string,
+};
+
+ImageWithFallBack.defaultProps = {
+  maxWidth: "auto",
+  invertedRatio: 56.25,
 };
 
 export default ImageWithFallBack;
