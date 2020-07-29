@@ -1,7 +1,8 @@
 # Image with fallback
 
 Display a fallback while an image is loading, to avoid a jump effect when the image loads.
-![](Live-example.gif)
+
+![example](Live-example.gif)
 
 ## Install
 
