@@ -1,0 +1,3 @@
+{
+  "extends": "@binance-academy/eslint-config-bnb"
+}
